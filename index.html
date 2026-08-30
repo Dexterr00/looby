@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوبي — أفلام ومسلسلات وأنمي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ستارة الافتتاح -->
+<div class="curtain" id="curtain">
+  <div class="curtain-panel right"></div>
+  <div class="curtain-panel left"></div>
+  <div class="curtain-logo">لوبي</div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <span class="brand-reel">🎞</span>
+      <span class="brand-name">لوبي</span>
+    </a>
+    <nav class="main-nav">
+      <button class="nav-link active" data-target="row-movies" data-i18n="nav_movies">أفلام</button>
+      <button class="nav-link" data-target="row-tv" data-i18n="nav_tv">مسلسلات</button>
+      <button class="nav-link" data-target="row-anime" data-i18n="nav_anime">أنمي</button>
+    </nav>
+    <div class="header-actions">
+      <div class="search-wrap">
+        <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن فيلم، مسلسل، أنمي…" autocomplete="off">
+        <span class="search-icon">⌕</span>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+      <button class="lang-toggle" id="langToggle" type="button">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- الهيرو -->
+  <section class="hero" id="hero">
+    <div class="hero-backdrop" id="heroBackdrop"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow" id="heroEyebrow" data-i18n="hero_eyebrow">يُعرض الآن</p>
+      <h1 class="hero-title" id="heroTitle">—</h1>
+      <p class="hero-meta" id="heroMeta"></p>
+      <p class="hero-overview" id="heroOverview"></p>
+      <div class="hero-actions">
+        <button class="btn btn-brass" id="heroTrailerBtn" data-i18n="hero_trailer_btn">▶ شاهد الإعلان</button>
+        <button class="btn btn-ghost" id="heroDetailsBtn" data-i18n="hero_details_btn">تفاصيل أكثر</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="filmstrip" aria-hidden="true"></div>
+
+  <!-- تنبيه إعداد المفتاح -->
+  <div class="setup-banner" id="setupBanner">
+    <p data-i18n-html="setup_banner_text">
+      ⚠️ لتشغيل الموقع بمحتوى حقيقي، ضع مفتاح TMDB المجاني في ملف
+      <code>js/config.js</code>. التفاصيل في ملف <code>README.md</code>.
+    </p>
+    <button id="dismissBanner" data-i18n="dismiss_banner">إغلاق</button>
+  </div>
+
+  <div id="content">
+    <section class="row" id="row-trending">
+      <div class="row-head">
+        <h2 data-i18n="row_trending">الأكثر رواجًا هذا الأسبوع</h2>
+      </div>
+      <div class="row-track" id="track-trending"></div>
+    </section>
+
+    <section class="row" id="row-movies">
+      <div class="row-head">
+        <h2 data-i18n="row_movies">أفلام شائعة</h2>
+      </div>
+      <div class="row-track" id="track-movies"></div>
+    </section>
+
+    <section class="row" id="row-tv">
+      <div class="row-head">
+        <h2 data-i18n="row_tv">مسلسلات شائعة</h2>
+      </div>
+      <div class="row-track" id="track-tv"></div>
+    </section>
+
+    <div class="filmstrip" aria-hidden="true"></div>
+
+    <section class="row" id="row-anime">
+      <div class="row-head">
+        <h2 data-i18n="row_anime">أنمي شائع</h2>
+      </div>
+      <div class="row-track" id="track-anime"></div>
+    </section>
+
+    <section class="row" id="row-top-rated">
+      <div class="row-head">
+        <h2 data-i18n="row_top_rated">الأعلى تقييمًا</h2>
+      </div>
+      <div class="row-track" id="track-top-rated"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p class="ticket-note" data-i18n="footer_ticket">تذكرة صالحة لعرض واحد فقط · لوبي © 2026</p>
+  <p class="disclaimer" data-i18n="footer_disclaimer">
+    هذا القالب يعرض بيانات وصور وإعلانات (تريلر) من مصادر عامة مجانية (TMDB وAniList) لأغراض العرض والتصفح فقط،
+    ولا يستضيف أو يبث أي أفلام أو مسلسلات كاملة محمية بحقوق الملكية. لإضافة تشغيل فعلي، اربط الموقع بمصادر تملك حقوق بثها.
+  </p>
+</footer>
+
+<!-- المودال -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
